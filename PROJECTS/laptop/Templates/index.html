@@ -1,0 +1,233 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+      (function() {
+        try {
+          if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark-mode');
+            document.body && document.body.classList.add('dark-mode');
+          }
+        } catch(e){}
+      })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laptop Price Predictor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            color: #2d3a4b;
+            text-align: center;
+            padding: 60px 20px 30px 20px;
+            box-shadow: var(--shadow-medium);
+            transform-style: preserve-3d;
+        }
+        header h1 {
+            font-size: 3em;
+            font-weight: 600;
+            margin: 0;
+            letter-spacing: 2px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: titleFloat 3s ease-in-out infinite;
+        }
+        header p {
+            font-size: 1.2em;
+            margin: 18px 0 0 0;
+            color: #4e5d6c;
+        }
+        .main-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+        .content-container {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            box-shadow: var(--shadow-medium);
+            padding: 48px 36px;
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+            transition: var(--transition-medium);
+            transform-style: preserve-3d;
+        }
+        .content-container:hover {
+            transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+            box-shadow: var(--shadow-heavy);
+        }
+        .content-container h2 {
+            color: #2d3a4b;
+            font-size: 2em;
+            margin-bottom: 18px;
+            font-weight: 600;
+        }
+        .content-container p {
+            color: #4e5d6c;
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        .buttonGroup {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        .btn {
+            background: linear-gradient(90deg, #667eea 0%, #64b6ff 100%);
+            color: white;
+            padding: 15px 32px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 4px 16px rgba(102, 126, 234, 0.12);
+            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+        }
+        .btn:hover {
+            background: linear-gradient(90deg, #5a8dee 0%, #4fc3f7 100%);
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.18);
+        }
+        .btn-secondary {
+            background: linear-gradient(90deg, #6c757d 0%, #495057 100%);
+        }
+        .btn-success {
+            background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);
+            color: #2d3a4b;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 18px;
+            margin-top: 36px;
+            transform-style: preserve-3d;
+        }
+        .feature {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            padding: 18px 12px;
+            border-radius: 15px;
+            border-left: 4px solid #64b6ff;
+            box-shadow: var(--shadow-light);
+            transform-style: preserve-3d;
+            transition: var(--transition-medium);
+            cursor: pointer;
+        }
+        .feature h3 {
+            color: #2d3a4b;
+            margin: 0 0 8px 0;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+        .feature p {
+            color: #4e5d6c;
+            margin: 0;
+            font-size: 0.97em;
+        }
+        footer {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            color: #2d3a4b;
+            text-align: center;
+            padding: 18px;
+            font-size: 1em;
+            letter-spacing: 1px;
+            box-shadow: var(--shadow-light);
+            transform-style: preserve-3d;
+        }
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            .buttonGroup {
+                flex-direction: column;
+                align-items: center;
+            }
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            .features {
+                grid-template-columns: 1fr;
+            }
+            .content-container {
+                padding: 24px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+        <h1>Laptop Price Predictor</h1>
+        <p>AI-powered laptop price estimation using machine learning</p>
+</header>
+    
+    <div class="main-content">
+        <div class="content-container glass-card">
+            <h2 class="title-3d">Welcome to Laptop Price Predictor</h2>
+            <p class="text-3d">Get accurate price estimates for your laptop using our advanced machine learning model. Simply enter your laptop specifications and receive an instant price prediction.</p>
+            
+<div class="buttonGroup">
+                        <a href="/project" class="btn btn-3d">🚀 Predict Price</a>
+        <a href="/history" class="btn btn-success btn-3d">📊 View History</a>
+        <a href="/contact" class="btn btn-secondary btn-3d">📞 Contact</a>
+            </div>
+            
+            <div class="features grid-3d">
+                <div class="feature card-3d grid-item-3d">
+                    <h3>🎯 Accurate Predictions</h3>
+                    <p>Our AI model provides reliable price estimates based on comprehensive laptop specifications.</p>
+                </div>
+                <div class="feature card-3d grid-item-3d">
+                    <h3>⚡ Instant Results</h3>
+                    <p>Get price predictions instantly with our optimized machine learning algorithm.</p>
+                </div>
+                <div class="feature card-3d grid-item-3d">
+                    <h3>📈 Historical Data</h3>
+                    <p>Track your previous predictions and compare different laptop configurations.</p>
+                </div>
+            </div>
+        </div>
+</div>
+    
+    <footer>
+        <p>&copy; 2025 Laptop Price Predictor | Powered by Machine Learning</p>
+    </footer>
+    
+    {% include 'dark_mode_toggle.html' %}
+    
+    <!-- Progress Indicator -->
+    <div class="progress-3d" style="position: fixed; top: 0; left: 0; width: 100%; height: 4px; z-index: 1001;">
+        <div class="progress-bar-3d" style="width: 0%"></div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

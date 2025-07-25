@@ -1,0 +1,101 @@
+<!-- about.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Project</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script>
+      (function() {
+        try {
+          if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark-mode');
+            document.body && document.body.classList.add('dark-mode');
+          }
+        } catch(e){}
+      })();
+    </script>
+    <style>
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            max-width: 700px;
+            margin: 60px auto 0 auto;
+            background: rgba(255,255,255,0.97);
+            border-radius: 24px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+            padding: 48px 36px 36px 36px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.3em;
+            font-weight: 600;
+            color: #2d3a4b;
+            margin-bottom: 18px;
+            letter-spacing: 1px;
+        }
+        .about-icon {
+            font-size: 3em;
+            margin-bottom: 18px;
+            color: #64b6ff;
+        }
+        p {
+            color: #4e5d6c;
+            font-size: 1.15em;
+            line-height: 1.7;
+            margin-bottom: 18px;
+        }
+        .back-btn {
+            background: #6c757d;
+            color: white;
+            padding: 10px 24px;
+            border: none;
+            border-radius: 7px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 22px;
+            font-size: 1em;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        .back-btn:hover {
+            background: #495057;
+        }
+        @media (max-width: 700px) {
+            .container {
+                margin: 24px 8px 0 8px;
+                padding: 24px 8px 18px 8px;
+            }
+            h1 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="about-icon">💻</div>
+        <h1>About Laptop Price Predictor</h1>
+        <p>
+            The <b>Laptop Price Predictor</b> project uses machine learning to estimate the resale price of laptops based on specifications such as brand, processor type, RAM, storage, and graphics card.<br>
+            By training on a cleaned dataset (<code>clean_lptp.csv</code>), the model can provide an estimated value for used laptops.
+        </p>
+        <p>
+            This tool helps users make informed decisions when buying or selling laptops by offering a price prediction grounded in real-world data and AI technology.
+        </p>
+        <a href="{{ url_for('index') }}" class="back-btn btn-3d">← Back to Home</a>
+    </div>
+    {% include 'dark_mode_toggle.html' %}
+    
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

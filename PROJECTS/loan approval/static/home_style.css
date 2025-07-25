@@ -1,0 +1,184 @@
+/* Apple-style navigation bar */
+.loan-navbar {
+    width: 100%;
+    background: rgba(255,255,255,0.95);
+    box-shadow: 0 2px 12px 0 rgba(31,38,135,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 36px 0 36px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    height: 64px;
+    animation: fadeInDown 1s cubic-bezier(.4,0,.2,1);
+    min-width: 0;
+    flex-wrap: wrap;
+    overflow-x: auto;
+}
+.loan-logo {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #3949ab;
+    letter-spacing: -1px;
+}
+.loan-logo span {
+    color: #5c6bc0;
+}
+.loan-nav-links {
+    list-style: none;
+    display: flex;
+    gap: 32px;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+    flex-wrap: wrap;
+    overflow-x: auto;
+    width: 100%;
+    white-space: nowrap;
+}
+.loan-nav-links li a {
+    text-decoration: none;
+    color: #222;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: color 0.2s;
+    padding: 8px 0;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+}
+.loan-nav-links li a:hover, .loan-nav-links li a:focus {
+    color: #5c6bc0;
+    border-bottom: 2px solid #5c6bc0;
+}
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: linear-gradient(120deg, #e8eaf6 0%, #f5f7fa 100%);
+    position: relative;
+    padding-top: 64px;
+    overflow: hidden;
+}
+.hero-content {
+    z-index: 2;
+    text-align: center;
+    animation: fadeIn 1.2s cubic-bezier(.4,0,.2,1);
+}
+.hero-content h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: #222;
+    margin-bottom: 18px;
+    letter-spacing: -2px;
+}
+.hero-content p {
+    font-size: 1.25rem;
+    color: #5c6bc0;
+    margin-bottom: 32px;
+    font-weight: 500;
+}
+.hero-cta-btn {
+    display: inline-block;
+    padding: 16px 40px;
+    background: linear-gradient(90deg, #5c6bc0 0%, #3949ab 100%);
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 14px;
+    box-shadow: 0 2px 8px 0 rgba(92,107,192,0.10);
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    text-decoration: none;
+}
+.hero-cta-btn:hover, .hero-cta-btn:focus {
+    background: linear-gradient(90deg, #3949ab 0%, #5c6bc0 100%);
+    transform: translateY(-2px) scale(1.03);
+}
+.hero-parallax {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: url('/static/loan_parallax.svg') center/cover no-repeat;
+    opacity: 0.12;
+    z-index: 1;
+    pointer-events: none;
+    animation: parallaxMove 10s linear infinite alternate;
+}
+@keyframes parallaxMove {
+    from { transform: translateY(0); }
+    to { transform: translateY(30px); }
+}
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1.2s cubic-bezier(.4,0,.2,1) forwards;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: none; }
+}
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-40px); }
+    to { opacity: 1; transform: none; }
+}
+.about-section, .contact-section {
+    max-width: 600px;
+    margin: 120px auto 0 auto;
+    background: rgba(255,255,255,0.85);
+    box-shadow: 0 8px 32px 0 rgba(31,38,135,0.10);
+    border-radius: 32px;
+    padding: 48px 32px 32px 32px;
+    animation: fadeIn 1.2s cubic-bezier(.4,0,.2,1);
+    box-sizing: border-box;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    text-align: center;
+}
+.contact-form textarea {
+    width: 100%;
+    padding: 18px 14px 6px 14px;
+    border: none;
+    border-radius: 14px;
+    background: rgba(245,247,250,0.95);
+    font-size: 1.05rem;
+    color: #222;
+    outline: none;
+    box-shadow: 0 2px 8px 0 rgba(31,38,135,0.06);
+    transition: box-shadow 0.2s, background 0.2s;
+    resize: vertical;
+    min-height: 80px;
+}
+.contact-form textarea:focus {
+    background: #e3e7f1;
+    box-shadow: 0 4px 16px 0 rgba(92,107,192,0.10);
+}
+@media (max-width: 900px) {
+    .loan-navbar {
+        padding: 0 10px 0 10px;
+    }
+    .loan-nav-links {
+        gap: 12px;
+    }
+    .loan-nav-links li a {
+        font-size: 0.98rem;
+    }
+}
+@media (max-width: 700px) {
+    .about-section, .contact-section {
+        padding: 24px 6px 16px 6px;
+        max-width: 98vw;
+        box-sizing: border-box;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        text-align: center;
+    }
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    .loan-navbar {
+        padding: 0 10px;
+    }
+} 

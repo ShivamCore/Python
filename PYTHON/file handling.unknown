@@ -1,0 +1,40 @@
+# read 'r'
+# write 'w' 
+# append 'a' 
+# create 'x' 
+
+file = open('demo.txt','r')
+file.read()
+
+
+
+
+
+file = open('demo.txt','r')
+file.read()
+file.close()
+
+
+
+file = open('demo.txt','w')
+file.write('this is file')
+file.close()
+
+
+
+file = open('demo.txt','w')
+file.write('this is a demo file in python   ')
+
+
+file = open('demo.txt','a')
+file.write(' my name is ankur')
+file = open('demo.txt', 'r')
+file.read()
+file.close()
+
+
+
+file = open('demo11.txt','x')
+file.write("i am from pilani")
+file = open('demo.txt', 'r')
+file.read()

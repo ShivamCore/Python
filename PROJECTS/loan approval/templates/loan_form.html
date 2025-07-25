@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Approval Application</title>
+    <link rel="stylesheet" href="/static/loan_style.css">
+</head>
+<body>
+    <div class="loan-main-container">
+        <header class="loan-header">
+            <h1>Loan Approval</h1>
+            <p class="loan-subtitle">Apply for your loan with confidence</p>
+        </header>
+        <form id="loan-form" class="loan-form" method="POST" action="/loan_predict" autocomplete="off" novalidate>
+            <div class="loan-form-group">
+                <input type="text" name="applicant_name" id="applicant_name" required />
+                <label for="applicant_name">Applicant Name</label>
+            </div>
+            <div class="loan-form-row">
+                <div class="loan-form-group">
+                    <input type="number" name="age" id="age" min="18" max="99" required />
+                    <label for="age">Age</label>
+                </div>
+                <div class="loan-form-group">
+                    <select name="gender" id="gender" required>
+                        <option value="" disabled selected></option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <label for="gender">Gender</label>
+                </div>
+            </div>
+            <div class="loan-form-row">
+                <div class="loan-form-group">
+                    <select name="marital_status" id="marital_status" required>
+                        <option value="" disabled selected></option>
+                        <option value="Single">Single</option>
+                        <option value="Married">Married</option>
+                        <option value="Divorced">Divorced</option>
+                        <option value="Widowed">Widowed</option>
+                    </select>
+                    <label for="marital_status">Marital Status</label>
+                </div>
+                <div class="loan-form-group">
+                    <input type="number" name="dependents" id="dependents" min="0" max="10" required />
+                    <label for="dependents">Dependents</label>
+                </div>
+            </div>
+            <div class="loan-form-row">
+                <div class="loan-form-group">
+                    <select name="education" id="education" required>
+                        <option value="" disabled selected></option>
+                        <option value="Graduate">Graduate</option>
+                        <option value="Not Graduate">Not Graduate</option>
+                    </select>
+                    <label for="education">Education</label>
+                </div>
+                <div class="loan-form-group">
+                    <select name="employment_status" id="employment_status" required>
+                        <option value="" disabled selected></option>
+                        <option value="Employed">Employed</option>
+                        <option value="Self-Employed">Self-Employed</option>
+                        <option value="Unemployed">Unemployed</option>
+                    </select>
+                    <label for="employment_status">Employment Status</label>
+                </div>
+            </div>
+            <div class="loan-form-row">
+                <div class="loan-form-group">
+                    <input type="number" name="applicant_income" id="applicant_income" min="0" required />
+                    <label for="applicant_income">Applicant Income</label>
+                </div>
+                <div class="loan-form-group">
+                    <input type="number" name="coapplicant_income" id="coapplicant_income" min="0" required />
+                    <label for="coapplicant_income">Coapplicant Income</label>
+                </div>
+            </div>
+            <div class="loan-form-row">
+                <div class="loan-form-group">
+                    <input type="number" name="loan_amount" id="loan_amount" min="0" required />
+                    <label for="loan_amount">Loan Amount</label>
+                </div>
+                <div class="loan-form-group">
+                    <input type="number" name="loan_amount_term" id="loan_amount_term" min="1" required />
+                    <label for="loan_amount_term">Loan Amount Term (months)</label>
+                </div>
+            </div>
+            <div class="loan-form-row">
+                <div class="loan-form-group">
+                    <select name="credit_history" id="credit_history" required>
+                        <option value="" disabled selected></option>
+                        <option value="1">Good</option>
+                        <option value="0">Bad</option>
+                    </select>
+                    <label for="credit_history">Credit History</label>
+                </div>
+                <div class="loan-form-group">
+                    <select name="property_area" id="property_area" required>
+                        <option value="" disabled selected></option>
+                        <option value="Urban">Urban</option>
+                        <option value="Semiurban">Semiurban</option>
+                        <option value="Rural">Rural</option>
+                    </select>
+                    <label for="property_area">Property Area</label>
+                </div>
+            </div>
+            <div class="loan-form-actions">
+                <button type="submit" class="loan-submit-btn">Apply for Loan</button>
+            </div>
+            <div id="loan-form-message" class="loan-form-message"></div>
+        </form>
+        <div id="loan-result" class="loan-result"></div>
+        <svg id="confetti" class="confetti" viewBox="0 0 400 100">
+            <circle cx="50" cy="30" r="8" fill="#43e97b"/>
+            <circle cx="120" cy="60" r="6" fill="#38f9d7"/>
+            <circle cx="200" cy="40" r="10" fill="#5c6bc0"/>
+            <circle cx="300" cy="70" r="7" fill="#3949ab"/>
+            <circle cx="350" cy="20" r="9" fill="#e53935"/>
+            <circle cx="80" cy="80" r="5" fill="#e35d5b"/>
+        </svg>
+    </div>
+    <script src="/static/loan_script.js"></script>
+</body>
+</html> 

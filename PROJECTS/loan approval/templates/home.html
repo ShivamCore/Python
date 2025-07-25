@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Approval - Home</title>
+    <link rel="stylesheet" href="/static/loan_style.css">
+    <link rel="stylesheet" href="/static/home_style.css">
+    <style>
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background: linear-gradient(120deg, #e8eaf6 0%, #f5f7fa 100%);
+            position: relative;
+            padding-top: 64px;
+            overflow: hidden;
+        }
+        .hero-bg-anim {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.18;
+        }
+        .hero-content {
+            z-index: 2;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 56px 24px 64px 24px;
+            background: rgba(255,255,255,0.60);
+            border-radius: 36px;
+            box-shadow: 0 8px 32px 0 rgba(31,38,135,0.13);
+            backdrop-filter: blur(10px) saturate(180%);
+            animation: fadeInUp 1.2s cubic-bezier(.4,0,.2,1);
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(60px); }
+            to { opacity: 1; transform: none; }
+        }
+        .hero-content h1 {
+            font-size: 3.2rem;
+            font-weight: 900;
+            color: #222;
+            margin-bottom: 16px;
+            letter-spacing: -2px;
+            line-height: 1.1;
+        }
+        .hero-content .tagline {
+            font-size: 1.25rem;
+            color: #3949ab;
+            margin-bottom: 30px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        .hero-content p {
+            font-size: 1.15rem;
+            color: #5c6bc0;
+            margin-bottom: 38px;
+            font-weight: 500;
+        }
+        .hero-cta-btn {
+            display: inline-block;
+            padding: 22px 60px;
+            background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);
+            color: #fff;
+            font-size: 1.35rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 4px 24px 0 rgba(67,233,123,0.18);
+            cursor: pointer;
+            transition: background 0.2s, transform 0.15s, box-shadow 0.2s, box-shadow 0.3s;
+            text-decoration: none;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            outline: none;
+            border: 2.5px solid #43e97b;
+            animation: ctaGlow 2.5s infinite alternate;
+        }
+        @keyframes ctaGlow {
+            0% { box-shadow: 0 0 0 0 #43e97b44; }
+            100% { box-shadow: 0 0 32px 8px #43e97b55; }
+        }
+        .hero-cta-btn:hover, .hero-cta-btn:focus {
+            background: linear-gradient(90deg, #38f9d7 0%, #43e97b 100%);
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 8px 32px 0 rgba(67,233,123,0.22);
+            border-color: #38f9d7;
+        }
+        .scroll-down-indicator {
+            position: absolute;
+            left: 50%;
+            bottom: 32px;
+            transform: translateX(-50%);
+            z-index: 3;
+            animation: bounce 1.5s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(12px); }
+        }
+        @media (max-width: 700px) {
+            .hero-content h1 {
+                font-size: 2.1rem;
+            }
+            .hero-content {
+                padding: 24px 6px 32px 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="loan-navbar">
+        <div class="loan-logo">Loan<span>Pro</span></div>
+        <ul class="loan-nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/apply">Apply</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+    </nav>
+    <section class="hero-section">
+        <div class="hero-bg-anim">
+            <svg width="100%" height="100%" viewBox="0 0 1440 400" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute;bottom:0;left:0;width:100%;height:100%;">
+                <path d="M0,320 Q360,240 720,320 T1440,320 V400 H0 Z" fill="url(#waveGradient)" opacity="0.7"/>
+                <defs>
+                    <linearGradient id="waveGradient" x1="0" y1="0" x2="1440" y2="400" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#5c6bc0"/>
+                        <stop offset="1" stop-color="#43e97b"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+        <div class="hero-content">
+            <h1>Instant, Effortless<br>Loan Approval</h1>
+            <div class="tagline">Finance, reimagined for you.</div>
+            <p>Experience the future of finance. AI-powered, secure, and beautifully simple. Get your loan decision in seconds with a single click.</p>
+            <a href="/apply" class="hero-cta-btn">Apply Now</a>
+        </div>
+        <div class="scroll-down-indicator">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16 8V24" stroke="#5c6bc0" stroke-width="3" stroke-linecap="round"/>
+                <path d="M10 18L16 24L22 18" stroke="#43e97b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+    </section>
+    <script src="/static/home_script.js"></script>
+</body>
+</html> 

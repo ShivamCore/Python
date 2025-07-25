@@ -1,0 +1,234 @@
+/* Apple-inspired, modern, corporate loan approval UI */
+body {
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'SF Pro Display', 'Segoe UI', 'Roboto', Arial, sans-serif;
+    background: linear-gradient(120deg, #e8eaf6 0%, #f5f7fa 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.loan-main-container {
+    background: rgba(255,255,255,0.35);
+    box-shadow: 0 8px 32px 0 rgba(31,38,135,0.18);
+    border-radius: 32px;
+    padding: 48px 32px 32px 32px;
+    max-width: 480px;
+    width: 100%;
+    margin: 40px auto;
+    position: relative;
+    animation: fadeIn 1.2s cubic-bezier(.4,0,.2,1);
+    backdrop-filter: blur(16px) saturate(180%);
+    border: 1.5px solid rgba(92,107,192,0.18);
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: none; }
+}
+.loan-header h1 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    color: #222;
+    letter-spacing: -1px;
+}
+.loan-subtitle {
+    color: #5c6bc0;
+    font-size: 1.1rem;
+    margin-bottom: 32px;
+    font-weight: 500;
+}
+.loan-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+.loan-form-row {
+    display: flex;
+    gap: 16px;
+}
+.loan-form-group {
+    flex: 1;
+    position: relative;
+    margin-bottom: 0;
+    box-sizing: border-box;
+    max-width: 100%;
+}
+.loan-form-group input,
+.loan-form-group select,
+.loan-form-group textarea {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 18px 14px 6px 14px;
+    border: none;
+    border-radius: 14px;
+    background: rgba(245,247,250,0.95);
+    font-size: 1.05rem;
+    color: #222;
+    outline: none;
+    box-shadow: 0 2px 8px 0 rgba(31,38,135,0.06), 0 0 0 0px #5c6bc0;
+    transition: box-shadow 0.2s, background 0.2s, border 0.2s;
+    border: 1.5px solid transparent;
+}
+.loan-form-group input:focus,
+.loan-form-group select:focus {
+    background: #e3e7f1;
+    box-shadow: 0 4px 16px 0 rgba(92,107,192,0.10), 0 0 0 3px #5c6bc0;
+    border: 1.5px solid #5c6bc0;
+}
+.loan-form-group label {
+    position: absolute;
+    left: 16px;
+    top: 18px;
+    color: #888;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: all 0.18s cubic-bezier(.4,0,.2,1);
+    background: transparent;
+}
+.loan-form-group input:focus + label,
+.loan-form-group input:not(:placeholder-shown) + label,
+.loan-form-group select:focus + label,
+.loan-form-group select:not([value=""]) + label {
+    top: 2px;
+    left: 12px;
+    font-size: 0.85rem;
+    color: #5c6bc0;
+    background: #f5f7fa;
+    padding: 0 4px;
+    border-radius: 6px;
+}
+.loan-submit-btn {
+    width: 100%;
+    padding: 16px 0;
+    background: linear-gradient(90deg, #5c6bc0 0%, #3949ab 100%);
+    color: #fff;
+    font-size: 1.15rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 14px;
+    box-shadow: 0 2px 8px 0 rgba(92,107,192,0.10);
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    margin-top: 8px;
+    overflow: hidden;
+    position: relative;
+}
+.loan-submit-btn::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(92,107,192,0.15);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.4s cubic-bezier(.4,0,.2,1), height 0.4s cubic-bezier(.4,0,.2,1);
+    z-index: 0;
+}
+.loan-submit-btn:active::after {
+    width: 200px;
+    height: 200px;
+}
+.loan-submit-btn:hover, .loan-submit-btn:focus {
+    background: linear-gradient(90deg, #3949ab 0%, #5c6bc0 100%);
+    transform: translateY(-2px) scale(1.03);
+}
+.loan-form-message {
+    min-height: 24px;
+    margin-top: 8px;
+    color: #e53935;
+    font-size: 1rem;
+    text-align: center;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+.loan-result {
+    margin-top: 32px;
+    padding: 24px 18px;
+    background: rgba(92,107,192,0.08);
+    border-radius: 18px;
+    font-size: 1.25rem;
+    color: #222;
+    text-align: center;
+    font-weight: 600;
+    box-shadow: 0 2px 8px 0 rgba(92,107,192,0.06);
+    display: none;
+    animation: resultFadeIn 0.7s cubic-bezier(.4,0,.2,1);
+    position: relative;
+    background: rgba(255,255,255,0.85);
+    border: 2.5px solid #5c6bc0;
+    box-shadow: 0 8px 32px 0 rgba(92,107,192,0.18);
+    min-height: 80px;
+}
+.loan-result.approved {
+    border-color: #43e97b;
+    background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);
+    color: #222;
+    animation: confetti 1.2s cubic-bezier(.4,0,.2,1);
+}
+.loan-result.rejected {
+    border-color: #e53935;
+    background: linear-gradient(90deg, #e53935 0%, #e35d5b 100%);
+    color: #fff;
+    animation: shake 0.5s cubic-bezier(.4,0,.2,1);
+}
+@keyframes resultFadeIn {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: none; }
+}
+@keyframes confetti {
+    0% { box-shadow: 0 0 0 0 #43e97b; }
+    70% { box-shadow: 0 0 40px 20px #43e97b; }
+    100% { box-shadow: 0 8px 32px 0 rgba(92,107,192,0.18); }
+}
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-10px); }
+    40%, 80% { transform: translateX(10px); }
+}
+/* Confetti SVG overlay */
+.confetti {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 100px;
+    pointer-events: none;
+    z-index: 10;
+    display: none;
+}
+.loan-result.approved ~ .confetti {
+    display: block;
+}
+.contact-form {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+@media (max-width: 600px) {
+    .loan-main-container {
+        padding: 24px 6px 16px 6px;
+        max-width: 98vw;
+    }
+    .loan-form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+    .contact-form {
+        padding: 0;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    .loan-form-group input,
+    .loan-form-group select,
+    .loan-form-group textarea {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+} 

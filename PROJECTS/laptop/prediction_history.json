@@ -1,0 +1,91 @@
+[
+  {
+    "timestamp": "2025-07-12 22:46:01",
+    "input_data": {
+      "brand": "HP",
+      "processor_brand": "AMD",
+      "processor_name": "Core i5",
+      "processor_gnrtn": "11th",
+      "ram_gb": "8",
+      "ram_type": "DDR4",
+      "ssd": "512",
+      "hdd": "512",
+      "graphic_card_gb": "4",
+      "warranty": "2 years",
+      "Touchscreen": "Yes"
+    },
+    "predicted_price": "\u20b976,990"
+  },
+  {
+    "id": 2,
+    "timestamp": "2025-07-20 17:59:11",
+    "specifications": {
+      "brand": 5,
+      "processor_brand": 2,
+      "processor_name": 8,
+      "processor_gnrtn": 1,
+      "ram_gb": 16,
+      "ram_type": 6,
+      "ssd": 777,
+      "hdd": 777,
+      "graphic_card_gb": 6,
+      "warranty": 3,
+      "Touchscreen": 1
+    },
+    "predicted_price": "84990"
+  },
+  {
+    "id": 3,
+    "timestamp": "2025-07-20 20:07:14",
+    "specifications": {
+      "brand": 6,
+      "processor_brand": 2,
+      "processor_name": 6,
+      "processor_gnrtn": 5,
+      "ram_gb": 16,
+      "ram_type": 4,
+      "ssd": 55,
+      "hdd": 55,
+      "graphic_card_gb": 6,
+      "warranty": 3,
+      "Touchscreen": 1
+    },
+    "predicted_price": "89990"
+  },
+  {
+    "id": 4,
+    "timestamp": "2025-07-20 20:08:55",
+    "specifications": {
+      "brand": 2,
+      "processor_brand": 1,
+      "processor_name": 5,
+      "processor_gnrtn": 5,
+      "ram_gb": 16,
+      "ram_type": 1,
+      "ssd": 555,
+      "hdd": 555,
+      "graphic_card_gb": 2,
+      "warranty": 3,
+      "Touchscreen": 1
+    },
+    "predicted_price": "244801"
+  },
+  {
+    "id": 5,
+    "timestamp": "2025-07-20 20:10:20",
+    "specifications": {
+      "brand": 4,
+      "processor_brand": 2,
+      "processor_name": 6,
+      "processor_gnrtn": 8,
+      "ram_gb": 16,
+      "ram_type": 2,
+      "ssd": 555,
+      "hdd": 555,
+      "graphic_card_gb": 8,
+      "warranty": 3,
+      "Touchscreen": 1
+    },
+    "predicted_price": "89990"
+  }
+]
