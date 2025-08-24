@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Enterprise AI Model Dashboard - Advanced machine learning models for cybersecurity, network analysis, and user authentication">
+    <meta name="keywords" content="AI, machine learning, cybersecurity, network analysis, authentication, dashboard">
+    <meta name="author" content="AI Model Hub">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ request.url }}">
+    <meta property="og:title" content="Enterprise AI Model Dashboard">
+    <meta property="og:description" content="Advanced machine learning models for cybersecurity and network analysis">
+    <meta property="og:image" content="{{ url_for('static', filename='images/og-image.png') }}">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ request.url }}">
+    <meta property="twitter:title" content="Enterprise AI Model Dashboard">
+    <meta property="twitter:description" content="Advanced machine learning models for cybersecurity and network analysis">
+    <meta property="twitter:image" content="{{ url_for('static', filename='images/og-image.png') }}">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='images/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='images/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='images/favicon-16x16.png') }}">
+
+    <title>Enterprise AI Model Dashboard | Advanced ML for Cybersecurity</title>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" as="style">
+    <link rel="preload" href="{{ url_for('static', filename='css/style.css') }}" as="style">
+    
+    <!-- External CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Application CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Enterprise AI Model Dashboard",
+        "description": "Advanced machine learning models for cybersecurity and network analysis",
+        "url": "{{ request.url }}",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+</head>
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Application Shell -->
+    <div id="app" class="app-container">
+        <!-- Loading Screen -->
+        <div id="loading-screen" class="loading-screen" role="status" aria-live="polite">
+            <div class="loading-content">
+                <div class="loading-spinner" aria-hidden="true"></div>
+                <h2>Initializing AI Models</h2>
+                <p>Loading enterprise-grade machine learning models...</p>
+                <div class="loading-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    <span class="progress-text" id="progress-text">0%</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Header -->
+        <header class="app-header" role="banner">
+            <div class="header-container">
+                <a href="#" class="header-brand">
+                    <div class="brand-logo">
+                        <i class="fas fa-brain" aria-hidden="true"></i>
+                    </div>
+                    <div class="brand-text">
+                        <span>Enterprise AI Hub</span>
+                        <span style="font-size: 12px; color: var(--text-muted);">v2.0</span>
+                    </div>
+                </a>
+                
+                                            <nav class="header-nav" role="navigation" aria-label="Main navigation">
+                                <ul class="nav-list">
+                                    <li><a href="#dashboard" class="nav-link active" data-section="dashboard">
+                                        <i class="fas fa-chart-line" aria-hidden="true"></i>
+                                        <span>Dashboard</span>
+                                    </a></li>
+                                    <li><a href="#predictions" class="nav-link" data-section="predictions">
+                                        <i class="fas fa-magic" aria-hidden="true"></i>
+                                        <span>Predictions</span>
+                                    </a></li>
+                                    <li><a href="#batch" class="nav-link" data-section="batch">
+                                        <i class="fas fa-upload" aria-hidden="true"></i>
+                                        <span>Batch Processing</span>
+                                    </a></li>
+                                    <li><a href="#analytics" class="nav-link" data-section="analytics">
+                                        <i class="fas fa-chart-bar" aria-hidden="true"></i>
+                                        <span>Analytics</span>
+                                    </a></li>
+                                    <li><a href="#models" class="nav-link" data-section="models">
+                                        <i class="fas fa-cogs" aria-hidden="true"></i>
+                                        <span>Models</span>
+                                    </a></li>
+                                </ul>
+                            </nav>
+                            
+                            <!-- Mobile Navigation Toggle -->
+                            <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle navigation">
+                                <i class="fas fa-bars" aria-hidden="true"></i>
+                            </button>
+
+                <div class="header-actions">
+                    <div class="system-status">
+                        <div class="status-indicator online" aria-label="System status: Online"></div>
+                        <span class="status-text">All Systems Operational</span>
+                    </div>
+                    
+                    <button class="header-btn" id="notifications-btn" aria-label="Notifications">
+                        <i class="fas fa-bell" aria-hidden="true"></i>
+                        <span class="notification-badge" id="notification-count">0</span>
+                    </button>
+                    
+                    <button class="header-btn" id="settings-btn" aria-label="Settings">
+                        <i class="fas fa-cog" aria-hidden="true"></i>
+                    </button>
+                    
+                    <div class="user-menu">
+                        <button class="user-btn" id="user-menu-btn" aria-label="User menu" aria-expanded="false">
+                            <div class="user-avatar">
+                                <i class="fas fa-user" aria-hidden="true"></i>
+                            </div>
+                            <span class="user-name">Admin</span>
+                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        </button>
+                        <div class="user-dropdown" id="user-dropdown" role="menu">
+                            <a href="#profile" class="dropdown-item" role="menuitem">
+                                <i class="fas fa-user-circle" aria-hidden="true"></i>
+                                <span>Profile</span>
+                            </a>
+                            <a href="#preferences" class="dropdown-item" role="menuitem">
+                                <i class="fas fa-sliders-h" aria-hidden="true"></i>
+                                <span>Preferences</span>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#logout" class="dropdown-item" role="menuitem">
+                                <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
+                                <span>Sign Out</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main id="main-content" class="app-main" role="main">
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="content-section active">
+                <div class="section-header">
+                    <h1 class="section-title">Enterprise Dashboard</h1>
+                    <p class="section-subtitle">Real-time monitoring and analytics for AI model performance</p>
+                </div>
+
+                <!-- Key Metrics -->
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <div class="metric-icon">
+                                <i class="fas fa-network-wired" aria-hidden="true"></i>
+                            </div>
+                            <div class="metric-trend positive">
+                                <i class="fas fa-arrow-up" aria-hidden="true"></i>
+                                <span>+2.3%</span>
+                            </div>
+                        </div>
+                        <div class="metric-content">
+                            <h3 class="metric-value" id="rtt-accuracy">99.89%</h3>
+                            <p class="metric-label">RTT Prediction Accuracy</p>
+                            <div class="metric-chart">
+                                <canvas id="rtt-chart" width="200" height="60"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <div class="metric-icon">
+                                <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                            </div>
+                            <div class="metric-trend positive">
+                                <i class="fas fa-arrow-up" aria-hidden="true"></i>
+                                <span>+1.8%</span>
+                            </div>
+                        </div>
+                        <div class="metric-content">
+                            <h3 class="metric-value" id="attack-accuracy">92.00%</h3>
+                            <p class="metric-label">Attack Detection Rate</p>
+                            <div class="metric-chart">
+                                <canvas id="attack-chart" width="200" height="60"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <div class="metric-icon">
+                                <i class="fas fa-user-check" aria-hidden="true"></i>
+                            </div>
+                            <div class="metric-trend positive">
+                                <i class="fas fa-arrow-up" aria-hidden="true"></i>
+                                <span>+3.1%</span>
+                            </div>
+                        </div>
+                        <div class="metric-content">
+                            <h3 class="metric-value" id="login-accuracy">84.20%</h3>
+                            <p class="metric-label">Login Success Rate</p>
+                            <div class="metric-chart">
+                                <canvas id="login-chart" width="200" height="60"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <div class="metric-icon">
+                                <i class="fas fa-clock" aria-hidden="true"></i>
+                            </div>
+                            <div class="metric-trend neutral">
+                                <i class="fas fa-minus" aria-hidden="true"></i>
+                                <span>0.0%</span>
+                            </div>
+                        </div>
+                        <div class="metric-content">
+                            <h3 class="metric-value" id="avg-response">45ms</h3>
+                            <p class="metric-label">Average Response Time</p>
+                            <div class="metric-chart">
+                                <canvas id="response-chart" width="200" height="60"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="activity-section">
+                    <div class="section-header">
+                        <h2>Recent Activity</h2>
+                        <button class="btn btn-secondary" id="refresh-activity">
+                            <i class="fas fa-sync-alt" aria-hidden="true"></i>
+                            <span>Refresh</span>
+                        </button>
+                    </div>
+                    <div class="activity-list" id="activity-list">
+                        <!-- Activity items will be populated by JavaScript -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Predictions Section -->
+            <section id="predictions" class="content-section">
+                <div class="section-header">
+                    <h1 class="section-title">AI Predictions</h1>
+                    <p class="section-subtitle">Real-time predictions using advanced machine learning models</p>
+                </div>
+
+                <div class="predictions-grid">
+                    <!-- RTT Prediction Card -->
+                    <div class="prediction-card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-network-wired" aria-hidden="true"></i>
+                            </div>
+                            <h3>Round-Trip Time Prediction</h3>
+                            <div class="card-badge success">Active</div>
+                        </div>
+                        
+                        <form id="rtt-form" class="prediction-form" novalidate>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="rtt-asn">ASN</label>
+                                    <input type="number" id="rtt-asn" name="ASN" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="rtt-hour">Hour</label>
+                                    <input type="number" id="rtt-hour" name="hour" class="form-control" min="0" max="23" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="rtt-day">Day of Week</label>
+                                    <select id="rtt-day" name="day_of_week" class="form-control" required>
+                                        <option value="">Select day</option>
+                                        <option value="0">Monday</option>
+                                        <option value="1">Tuesday</option>
+                                        <option value="2">Wednesday</option>
+                                        <option value="3">Thursday</option>
+                                        <option value="4">Friday</option>
+                                        <option value="5">Saturday</option>
+                                        <option value="6">Sunday</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="rtt-country-freq">Country Frequency</label>
+                                    <input type="number" id="rtt-country-freq" name="Country_freq" class="form-control" step="0.01" min="0" max="1" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-secondary demo-fill" data-form="rtt-form">
+                                    <i class="fas fa-magic" aria-hidden="true"></i>
+                                    <span>Fill Demo Data</span>
+                                </button>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-play" aria-hidden="true"></i>
+                                    <span>Predict RTT</span>
+                                </button>
+                            </div>
+                        </form>
+
+                        <div class="loading" id="rtt-loading">
+                            <div class="spinner"></div>
+                            <p>Processing prediction...</p>
+                        </div>
+
+                        <div class="result" id="rtt-result"></div>
+                    </div>
+
+                    <!-- Login Prediction Card -->
+                    <div class="prediction-card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-user-check" aria-hidden="true"></i>
+                            </div>
+                            <h3>Login Success Prediction</h3>
+                            <div class="card-badge success">Active</div>
+                        </div>
+                        
+                        <form id="login-form" class="prediction-form" novalidate>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="login-asn">ASN</label>
+                                    <input type="number" id="login-asn" name="ASN" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="login-hour">Hour</label>
+                                    <input type="number" id="login-hour" name="hour" class="form-control" min="0" max="23" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="login-country-freq">Country Frequency</label>
+                                    <input type="number" id="login-country-freq" name="Country_freq" class="form-control" step="0.01" min="0" max="1" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="login-device-freq">Device Type Frequency</label>
+                                    <input type="number" id="login-device-freq" name="Device Type_freq" class="form-control" step="0.01" min="0" max="1" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-secondary demo-fill" data-form="login-form">
+                                    <i class="fas fa-magic" aria-hidden="true"></i>
+                                    <span>Fill Demo Data</span>
+                                </button>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-play" aria-hidden="true"></i>
+                                    <span>Predict Login</span>
+                                </button>
+                            </div>
+                        </form>
+
+                        <div class="loading" id="login-loading">
+                            <div class="spinner"></div>
+                            <p>Processing prediction...</p>
+                        </div>
+
+                        <div class="result" id="login-result"></div>
+                    </div>
+
+                    <!-- Attack Detection Card -->
+                    <div class="prediction-card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                            </div>
+                            <h3>Attack Detection</h3>
+                            <div class="card-badge success">Active</div>
+                        </div>
+                        
+                        <form id="attack-form" class="prediction-form" novalidate>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="attack-asn">ASN</label>
+                                    <input type="number" id="attack-asn" name="ASN" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="attack-hour">Hour</label>
+                                    <input type="number" id="attack-hour" name="hour" class="form-control" min="0" max="23" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="attack-country-freq">Country Frequency</label>
+                                    <input type="number" id="attack-country-freq" name="Country_freq" class="form-control" step="0.01" min="0" max="1" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="attack-ip-count">IP Attack Count</label>
+                                    <input type="number" id="attack-ip-count" name="ip_attack_count" class="form-control" min="0" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-secondary demo-fill" data-form="attack-form">
+                                    <i class="fas fa-magic" aria-hidden="true"></i>
+                                    <span>Fill Demo Data</span>
+                                </button>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-play" aria-hidden="true"></i>
+                                    <span>Detect Attack</span>
+                                </button>
+                            </div>
+                        </form>
+
+                        <div class="loading" id="attack-loading">
+                            <div class="spinner"></div>
+                            <p>Processing detection...</p>
+                        </div>
+
+                        <div class="result" id="attack-result"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Batch Processing Section -->
+            <section id="batch" class="content-section">
+                <div class="section-header">
+                    <h1 class="section-title">Batch Processing</h1>
+                    <p class="section-subtitle">Process large datasets with enterprise-grade batch prediction</p>
+                </div>
+
+                <div class="batch-container">
+                    <div class="batch-card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-upload" aria-hidden="true"></i>
+                            </div>
+                            <h3>Batch Prediction</h3>
+                        </div>
+
+                        <form id="batch-form" class="batch-form" enctype="multipart/form-data" novalidate>
+                            <div class="form-group">
+                                <label for="batch-model">Select Model</label>
+                                <select id="batch-model" name="model" class="form-control" required>
+                                    <option value="">Choose a model</option>
+                                    <option value="rtt">Round-Trip Time Prediction</option>
+                                    <option value="login">Login Success Prediction</option>
+                                    <option value="attack">Attack Detection</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="batch-file">Upload CSV File</label>
+                                <div class="file-upload">
+                                    <input type="file" id="batch-file" name="file" class="file-input" accept=".csv" required>
+                                    <div class="file-drop-zone" id="file-drop-zone">
+                                        <i class="fas fa-cloud-upload-alt" aria-hidden="true"></i>
+                                        <p>Drag and drop CSV file here or click to browse</p>
+                                        <span class="file-info">Maximum file size: 100MB</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-play" aria-hidden="true"></i>
+                                    <span>Process Batch</span>
+                                </button>
+                            </div>
+                        </form>
+
+                        <div class="loading" id="batch-loading">
+                            <div class="spinner"></div>
+                            <p>Processing batch prediction...</p>
+                        </div>
+
+                        <div class="result" id="batch-result"></div>
+                    </div>
+
+                    <div class="batch-info">
+                        <h4>Batch Processing Guidelines</h4>
+                        <ul>
+                            <li>CSV files should contain the required feature columns</li>
+                            <li>Maximum file size: 100MB</li>
+                            <li>Processing time depends on file size and model complexity</li>
+                            <li>Results will be downloaded automatically</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Analytics Section -->
+            <section id="analytics" class="content-section">
+                <div class="section-header">
+                    <h1 class="section-title">Analytics & Insights</h1>
+                    <p class="section-subtitle">Comprehensive analytics and performance insights</p>
+                </div>
+
+                <div class="analytics-grid">
+                    <div class="analytics-card">
+                        <div class="card-header">
+                            <h3>Model Performance</h3>
+                            <div class="card-actions">
+                                <button class="btn btn-sm btn-secondary" id="refresh-performance">
+                                    <i class="fas fa-sync-alt" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="performance-chart" width="400" height="300"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="analytics-card">
+                        <div class="card-header">
+                            <h3>Prediction Distribution</h3>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="distribution-chart" width="400" height="300"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="analytics-card">
+                        <div class="card-header">
+                            <h3>System Health</h3>
+                        </div>
+                        <div class="health-metrics">
+                            <div class="health-item">
+                                <div class="health-label">CPU Usage</div>
+                                <div class="health-value">23%</div>
+                                <div class="health-bar">
+                                    <div class="health-fill" style="width: 23%"></div>
+                                </div>
+                            </div>
+                            <div class="health-item">
+                                <div class="health-label">Memory Usage</div>
+                                <div class="health-value">67%</div>
+                                <div class="health-bar">
+                                    <div class="health-fill" style="width: 67%"></div>
+                                </div>
+                            </div>
+                            <div class="health-item">
+                                <div class="health-label">Model Load Time</div>
+                                <div class="health-value">1.2s</div>
+                                <div class="health-bar">
+                                    <div class="health-fill" style="width: 60%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Models Section -->
+            <section id="models" class="content-section">
+                <div class="section-header">
+                    <h1 class="section-title">Model Information</h1>
+                    <p class="section-subtitle">Detailed information about deployed AI models</p>
+                </div>
+
+                <div class="models-container" id="model-info">
+                    <!-- Model information will be populated by JavaScript -->
+                </div>
+            </section>
+        </main>
+
+        <!-- Sidebar -->
+        <aside class="app-sidebar" role="complementary">
+            <div class="sidebar-content">
+                <div class="sidebar-section">
+                    <h3>Quick Actions</h3>
+                    <div class="quick-actions">
+                        <button class="action-btn" id="new-prediction">
+                            <i class="fas fa-plus" aria-hidden="true"></i>
+                            <span>New Prediction</span>
+                        </button>
+                        <button class="action-btn" id="upload-batch">
+                            <i class="fas fa-upload" aria-hidden="true"></i>
+                            <span>Upload Batch</span>
+                        </button>
+                        <button class="action-btn" id="export-data">
+                            <i class="fas fa-download" aria-hidden="true"></i>
+                            <span>Export Data</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>System Status</h3>
+                    <div class="status-list">
+                        <div class="status-item">
+                            <div class="status-indicator online"></div>
+                            <span>API Server</span>
+                        </div>
+                        <div class="status-item">
+                            <div class="status-indicator online"></div>
+                            <span>Database</span>
+                        </div>
+                        <div class="status-item">
+                            <div class="status-indicator online"></div>
+                            <span>ML Models</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal-overlay" id="modal-overlay" aria-hidden="true">
+        <div class="modal" id="settings-modal" role="dialog" aria-labelledby="settings-title">
+            <div class="modal-header">
+                <h2 id="settings-title">Settings</h2>
+                <button class="modal-close" id="settings-close" aria-label="Close settings">
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="modal-content">
+                <div class="settings-section">
+                    <h3>Display Settings</h3>
+                    <div class="setting-item">
+                        <label for="theme-select">Theme</label>
+                        <select id="theme-select" class="form-control">
+                            <option value="dark">Dark</option>
+                            <option value="light">Light</option>
+                            <option value="auto">Auto</option>
+                        </select>
+                    </div>
+                    <div class="setting-item">
+                        <label for="refresh-interval">Auto-refresh Interval</label>
+                        <select id="refresh-interval" class="form-control">
+                            <option value="30">30 seconds</option>
+                            <option value="60">1 minute</option>
+                            <option value="300">5 minutes</option>
+                            <option value="0">Disabled</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notifications -->
+    <div class="notifications-container" id="notifications-container" aria-live="polite"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    
+    <!-- Service Worker for PWA -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch(registrationError => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+    </script>
+</body>
+</html> 
